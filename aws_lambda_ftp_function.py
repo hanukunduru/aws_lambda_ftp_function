@@ -19,10 +19,7 @@ s3_client = boto3.resource('s3')
 def is_ftp_folder(ftp, filename):
     try:
         res = ftp.sendcmd('MLST ' + filename)
-        if 'type=dir;' in res:
-            return True
-        else:
-            return False
+        return 'type=dir;' in res
     except:
         return False
 
